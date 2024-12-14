@@ -1,0 +1,21 @@
+﻿@model Asp5.Models.Category
+@{
+    ViewBag.Title = Model.CategoryName; 
+}
+
+<link rel="stylesheet" href="~/css/categoryDetails.css" />
+
+<div class="category-details">
+    <h2>Категория: @Model.CategoryName</h2> 
+    <dl class="dl-horizontal">
+        <dt>Идентификатор</dt>
+        <dd>@Model.CategoryId</dd> 
+
+        <dt>Название</dt>
+        <dd>@Model.CategoryName</dd> 
+    </dl>
+    <div class="actions">
+        <a asp-action="EditCategory" asp-route-id="@Model.CategoryId" class="edit">Изменить</a> 
+        <a asp-action="Index" class="back">Вернуться к списку</a>
+    </div>
+</div>

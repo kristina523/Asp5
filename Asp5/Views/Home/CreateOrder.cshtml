@@ -1,0 +1,41 @@
+﻿@model Asp5.Models.Order
+@{
+    ViewData["Title"] = "Добавление заказа";
+}
+
+<h1>Добавление заказа</h1>
+
+<form asp-action="CreateOrders" method="post">
+    <input type="hidden" asp-for="UserId" value="@ViewBag.UserId" />
+    <input type="hidden" asp-for="OrderDate" value="@DateTime.Now.ToShortDateString()" />
+
+    <div class="form-group">
+        <table class="table" id="orderItemsTable">
+            <thead>
+                <tr>
+                    <th>Продукт</th>
+                    <th>Количество</th>
+                    <th>Цена</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="newRow">
+                    <td>
+                        <select class="form-control product-select" name="OrderItems[0].ProductId" required>
+                            <option value="">Выберите продукт</option>
+                            @foreach (var product in ViewBag.Products)
+                            {
+                                <option value="@product.Value">@product.Text</option>
+                            }
+                        </select>
+                    </td>
+                    <td><input type="number" class="form-control quantity-input" name="OrderItems[0].Quantity" min="1" required /></td>
+                    <td><span class="unit-price">$<span class="price-value">0.00</span></span></td>
+                    <td><button type="button" class="btn btn-primary btn-sm add-item-btn">Добавить</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</form>
+   

@@ -1,0 +1,33 @@
+﻿@model Asp5.Models.Category
+@{
+    ViewData["Title"] = "Изменить категорию";
+}
+
+<link rel="stylesheet" href="~/css/editCategory.css" />
+
+<h1>Изменить категорию</h1>
+<hr />
+<div class="edit-category-form">
+    <form asp-action="EditCategory" asp-route-id="@Model.CategoryId" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="CategoryId" />
+        <div class="form-group">
+            <label asp-for="CategoryName" class="control-label">Название</label>
+            <input asp-for="CategoryName" class="form-control" />
+            <span asp-validation-for="CategoryName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Сохранить" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+
+<div class="back-to-list">
+    <a asp-action="Index">Назад к списку</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

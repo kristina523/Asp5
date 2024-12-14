@@ -1,0 +1,16 @@
+﻿@model Asp5.Models.Order
+@{
+    ViewBag.Title = "Заказ #" + Model.OrderId;
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    <p><strong>Order Date:</strong> @Model.OrderDate?.ToString("d")</p>
+    <p><strong>User ID:</strong> @Model.UserId</p>
+
+    <h3>Order Items</h3>
+    <ul>
+       
+    </ul>
+</div>
